@@ -2,58 +2,113 @@
 <html>
 
 <head>
-  <script data-require="angular.js@1.3.0" data-semver="1.3.0" src="https://code.angularjs.org/1.3.0/angular.js"></script>
-  <link rel="stylesheet" href="style.css" />
-  <!--<script src="script.js"></script>-->
-  <!--<script src="StockItem.js"></script>
-  <script src="StockItemList.js"></script>
-  <script src="app.js"></script>-->
+    <script data-require="angular.js@1.3.0" data-semver="1.3.0" src="https://code.angularjs.org/1.3.0/angular.js"></script>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    <style type="text/css">
+        #wrap {
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        #left_col {
+            float: left;
+            width: 40%;
+            padding-left: 30px;
+        }
+
+        #right_col {
+            float: right;
+            width: 60%;
+        }
+    </style>
 </head>
- 
- <body>
-  <div>
-    <h1>Item List</h1>
-    <ul>
-      <li ng-repeat="item in stockItemList">
-        <ol><strong>{{item.name}}</strong>
-          <ol>Description - {{item.description}}</ol>
-          <ol>Price - {{item.price}}</ol>
-          <ol>Available Date - {{item.availableDate}}</ol>
-          <ol>Taxable - {{item.taxable}}</ol>
-          <ol>Quantity - {{item.quantity}}</ol>
-        </ol>
-      </li>
-    </ul>
-    <div>
-      <p>*************************************************************************************</p>
-      <h1>Add a new Item</h1>
-      <form>
-        Item Name:
-        <br>
-        <input type="text" ng-model="newItemName">
-        <br> Description:
-        <br>
-        <input type="text" ng-model="newItemDescription">
-        <br> Price:
-        <br>
-        <input type="text" ng-model="newItemPrice">
-        <br> Available Date:
-        <br>
-        <input type="text" ng-model="newItemAvailableDate">
-        <br> Taxable:
-        <br>
-        <input type="text" ng-model="newItemTaxable">
-        <br> Quantity:
-        <br>
-        <input type="text" ng-model="newItemQuantity">
-        <br>
-        <br>
-        <button ng-click="addNewItem()">Add New Item</button>
-      </form>
+
+<body>
+    <div id="wrap">
+        <div id="right_col">
+
+            <h1>Item List</h1>
+            <table class="table">
+                <tr>
+                    <th>Name
+                    </th>
+                    <th>Description
+                    </th>
+                    <th>Price
+                    </th>
+                    <th>Available Date
+                    </th>
+                    <th>Taxable
+                    </th>
+                    <th>Quantity
+                    </th>
+                </tr>
+                <tr ng-repeat="item in stockItemList">
+                    <td> {{item.name}}
+                    </td>
+                    <td> {{item.description}}
+                    </td>
+                    <td> {{item.price}}
+                    </td>
+                    <td> {{item.availableDate}}
+                    </td>
+                    <td> {{item.taxable}}
+                    </td>
+                    <td> {{item.quantity}}
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div id="left_col">
+            <h1>Add a new Item</h1>
+            <form class="form-horizontal" role="form" ng-submit="addNewItem()">
+                <div class="form-group">
+                    <label class="col-md-2 control-label">Name</label>
+                    <div class="col-md-4">
+                        <input type="text" class="form-control" name="name" ng-model="newItemName" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-2 control-label">Description</label>
+                    <div class="col-md-4">
+                        <input type="text" class="form-control" name="description" ng-model="newItemDescription" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-2 control-label">Price</label>
+                    <div class="col-md-4">
+                        <input type="text" class="form-control" name="price" ng-model="newItemPrice" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-2 control-label">Available Date</label>
+                    <div class="col-md-4">
+                        <input type="text" class="form-control" name="availableDate" ng-model="newItemAvailableDate" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-2 control-label">Taxable</label>
+                    <div class="col-md-4">
+                        <input type="text" class="form-control" name="taxable" ng-model="newItemTaxable" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-2 control-label">Quantity</label>
+                    <div class="col-md-4">
+                        <input type="text" class="form-control" name="quantity" ng-model="newItemQuantity" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div style="padding-left:110px">
+                        <input type="submit" value="Submit" class="btn btn-primary" />
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
-
-  </div>
-
 </body>
 
 </html>

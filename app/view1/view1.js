@@ -12,21 +12,25 @@ angular.module('myApp.view1', ['ngRoute'])
 
   .factory('StockItemListModel', function () {
     //if we want to get the StockList from a backend api then we can use the below snippet instead of the above one
-          // .factory('StockItemListModel', ['$http',function($http) {
-          // $http.get('theServer/stockItemList/').success(function(stockData){
-          //   StockItemListModel.stockItemList=stockData;
-          // });
-          // }]);
+    // .factory('StockItemListModel', ['$http',function($http) {
+    // $http.get('theServer/stockItemList/').success(function(stockData){
+    //   StockItemListModel.stockItemList=stockData;
+    // });
+    // }]);
     var StockItemListModel = {};
-    //Using dummy data
+    //Using dummy data instead of above http function
     StockItemListModel.stockItemList = [
       { name: 'Milk', description: 'Whole fat', price: 1.20, availableDate: '01/01/2017', taxable: true, quantity: 23 },
       { name: 'Bread', description: 'Brown', price: 0.99, availableDate: '01/01/2017', taxable: true, quantity: 12 },
       { name: 'Cheese', description: 'Cheddar', price: 1.50, availableDate: '01/01/2017', taxable: true, quantity: 23 }
     ];
-    
+
     StockItemListModel.addNewItem = function (newItem) {
+      //adding to the dummy data
       StockItemListModel.stockItemList.push(newItem);
+      //if writing it to a backend api with http the code below can be used
+      //var dataObj={name:newItem.name,description: newItem.description, price:newItem.price, availableDate:newItem.availableDate, taxable:newItem.taxable, quantity: newItem.quantity};
+      // var res = $http.post('/addNewItem.json', dataObj);
     }
     return StockItemListModel;
   })
