@@ -3,7 +3,13 @@
 describe('myApp.view1 module', function () {
 
   beforeEach(module('myApp.view1'));
+  
+  var $controller;
 
+  beforeEach(inject(function(_$controller_){
+    $controller = _$controller_;
+  }));
+  
   describe('$scope.addNewItem', function () {
 
     it('should add a new item to the stock list', inject(function ($controller) {
